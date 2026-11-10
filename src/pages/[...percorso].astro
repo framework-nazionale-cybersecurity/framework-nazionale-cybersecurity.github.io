@@ -1,0 +1,96 @@
+---
+/**
+ * Rotta unica: genera ogni URL storico a partire dal reso catturato da Drupal.
+ *
+ * Il vincolo della migrazione e' che nessun URL attivo oggi restituisca 404, e
+ * che nessuna pagina appaia diversa dall'originale. Le rotte non sono quindi
+ * scritte a mano: si generano da content/_reso.json, che contiene le tre
+ * regioni (corpo, menu, spalla) cosi' come Drupal le produce, per ogni URL.
+ *
+ * Un URL presente fra gli url_originali ma assente dal reso e' un rinvio:
+ * online risponde 301 verso l'alias parlante. GitHub Pages non offre redirect
+ * lato server, quindi il rinvio e' una pagina con rel=canonical e meta refresh.
+ * Non e' un 301, ma consolida il segnale per i motori ed e' trasparente.
+ */
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import reso from '../../content/_reso.json';
+
+export async function getStaticPaths() {
+  const catturato: Record<string, { corpo: string; menu: string; spalla: string }> =
+    (await import('../../content/_reso.json')).default as any;
+
+  /** Nodi che Drupal serve come pagine iniziali, italiana e inglese. */
+  const HOME = { 5927: '/', 5915: '/en' } as Record<number, string>;
+
+  const pagine = await getCollection('pagine');
+  const rotte: any[] = [];
+
+  // Indice url → pagina, per recuperare il titolo di ciascun URL.
+  const perUrl = new Map<string, any>();
+  for (const p of pagine) for (const u of p.data.url_originali) perUrl.set(u, p);
+  for (const p of pagine) if (HOME[p.data.nid]) perUrl.set(HOME[p.data.nid], p);
+
+  const aggiungi = (url: string, pagina: any, rinvioVerso: string | null) =>
+    rotte.push({
+      params: { percorso: url.replace(/^\//, '') || undefined },
+      props: { titolo: pagina?.data.titolo ?? '', url, rinvioVerso },
+    });
+
+  // 1. Le pagine che hanno un contenuto reso.
+  for (const url of Object.keys(catturato)) aggiungi(url, perUrl.get(url), null);
+
+  // 2. I rinvii: URL storici privi di reso proprio.
+  for (const p of pagine) {
+    const suoi: string[] = p.data.url_originali;
+    const propri = suoi.filter((u) => catturato[u]);
+    const home = HOME[p.data.nid];
+    if (!propri.length && !home) continue; // nodo non pubblicabile: vedi sotto
+
+    for (const u of suoi) {
+      if (catturato[u]) continue;
+      // Un URL sotto /en rinvia alla versione inglese, se esiste.
+      const inglese = u.startsWith('/en');
+      const meta =
+        (inglese ? propri.find((x) => x.startsWith('/en')) : propri.find((x) => !x.startsWith('/en'))) ??
+        propri[0] ?? home;
+      aggiungi(u, p, meta);
+    }
+  }
+
+  // Nota: il nodo 5921 non compare in nessuna delle due liste. Il suo alias e'
+  // salvato con uno slash iniziale di troppo, Drupal ci rinvia da qualunque
+  // URL e la pagina risponde 404 a chiunque. Pubblicarla sarebbe una
+  // differenza rispetto all'originale, non una correzione richiesta.
+
+  return rotte;
+}
+
+const { titolo, url, rinvioVerso } = Astro.props;
+const pezzi = (reso as Record<string, { corpo: string; menu: string; spalla: string }>)[url];
+const inglese = url === '/en' || url.startsWith('/en/');
+---
+
+{
+  rinvioVerso ? (
+    <html lang={inglese ? 'en' : 'it'}>
+      <head>
+        <meta charset="utf-8" />
+        <title>{titolo}</title>
+        <link rel="canonical" href={new URL(rinvioVerso, Astro.site)} />
+        <meta http-equiv="refresh" content={`0; url=${rinvioVerso}`} />
+        <meta name="robots" content="noindex, follow" />
+      </head>
+      <body>
+        <p>
+          Questa pagina si trova ora in <a href={rinvioVerso}>{rinvioVerso}</a>.
+        </p>
+      </body>
+    </html>
+  ) : (
+    <Base titolo={titolo} lingua={inglese ? 'en' : 'it'} canonico={url} menu={pezzi.menu} spalla={pezzi.spalla}>
+      <h1 class="page-title">{titolo}</h1>
+      <div class="region region-content" set:html={pezzi.corpo} />
+    </Base>
+  )
+}

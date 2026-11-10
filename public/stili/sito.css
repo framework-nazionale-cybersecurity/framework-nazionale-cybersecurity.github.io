@@ -1,0 +1,238 @@
+/*
+ * Porting fedele dell'aspetto attuale.
+ *
+ * Valori misurati sugli stili calcolati del sito Drupal vivo (9 agosto 2026),
+ * non copiati dal foglio di stile del tema: `execute_responsive_theme` e' un
+ * tema commerciale e questo repository diventera' pubblico. Il risultato deve
+ * somigliare all'originale, non discenderne.
+ *
+ * Riferimento:
+ *   testata      gradiente #02aaee → #1789d1, alta 32px, titolo bianco 18px
+ *   banda menu   #0b6aa5, voci #c2e7ff 12px grassetto maiuscolo, attiva #1789d1
+ *   corpo        Arial 12px/1.62 su #666, fondo bianco
+ *   colonne      1024px totali: spalla 194px + contenuto 819px
+ *   piede        #e9e9e9 con bordo superiore 3px #dadada
+ *
+ * Il revamp sostituira' interamente questo file.
+ */
+
+:root {
+  --blu-chiaro: #02aaee;
+  --blu: #1789d1;
+  --blu-scuro: #0b6aa5;
+  --blu-testo: #c2e7ff;
+  --testo: #666;
+  --testo-forte: #333;
+  --linea: #dbdbdb;
+  --piede-fondo: #e9e9e9;
+  --piede-bordo: #dadada;
+  --larghezza: 1024px;
+  --spalla: 194px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--testo);
+  font: 12px/1.62 Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+.contenitore {
+  max-width: var(--larghezza);
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* --- collegamento di salto, visibile solo da tastiera --- */
+.salta {
+  position: absolute;
+  left: -9999px;
+}
+.salta:focus {
+  left: 0;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  padding: 8px 14px;
+  border: 2px solid var(--blu);
+}
+
+.nastro-anteprima {
+  margin: 0;
+  padding: 7px 14px;
+  background: #fdf3e0;
+  color: #7a4a00;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* --- testata --- */
+.banda-testata {
+  background: linear-gradient(var(--blu-chiaro) 0%, var(--blu) 100%);
+}
+.titolo-sito {
+  margin: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+.titolo-sito a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+  line-height: 1.2;
+}
+.titolo-sito a:hover { text-decoration: underline; }
+
+/* --- banda del menu ---------------------------------------------------
+   Il markup non e' nostro: e' quello reso da Drupal, catturato URL per URL.
+   I selettori seguono quindi le sue classi (.language-switcher-locale-url,
+   nav#main-menu, .nav-toggle, .active-trail), non nomi inventati qui. */
+.banda-menu { background: var(--blu-scuro); }
+.menu_inner_wrap { padding-bottom: 6px; }
+
+/* selettore di lingua, in alto a destra */
+.region-search { display: flex; justify-content: flex-end; padding: 8px 0 6px; }
+.language-switcher-locale-url {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 6px;
+}
+.language-switcher-locale-url a,
+.language-switcher-locale-url span.language-link {
+  display: block;
+  padding: 3px;
+  background: #fff;
+  border: 1px solid var(--linea);
+  line-height: 0;
+}
+/* Senza traduzione Drupal rende un <span>, non un collegamento: resta
+   visibile ma spento, ed e' giusto che si veda che non e' cliccabile. */
+.language-switcher-locale-url span.language-link { opacity: .55; }
+.language-icon { display: block; width: 30px; height: 24px; }
+
+/* voce di apertura del menu su schermi stretti */
+.nav-toggle {
+  display: none;
+  padding: 8px 10px;
+  color: var(--blu-testo);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+nav#main-menu ul.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+nav#main-menu ul.menu li { border-right: 1px solid rgba(255, 255, 255, .18); }
+nav#main-menu ul.menu a {
+  display: block;
+  padding: 8px 10px;
+  color: var(--blu-testo);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+nav#main-menu ul.menu a:hover { background: rgba(255, 255, 255, .1); color: #fff; }
+nav#main-menu ul.menu a.active-trail,
+nav#main-menu ul.menu a.active { background: var(--blu); color: #fff; }
+
+/* --- corpo a due colonne --- */
+.corpo {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding-top: 18px;
+  padding-bottom: 26px;
+}
+.spalla { flex: 0 0 var(--spalla); min-width: 0; }
+.contenuto { flex: 1 1 auto; min-width: 0; }
+
+.blocco { margin-bottom: 18px; }
+.blocco p { margin: 0 0 8px; }
+.blocco img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--linea);
+  padding: 3px;
+  background: #fff;
+}
+/* Il logo CIS porta larghezza e altezza inline nel markup ereditato:
+   vanno neutralizzate, altrimenti sfonda la colonna. */
+.blocco img[style] { width: auto !important; height: auto !important; }
+
+/* --- contenuto --- */
+.contenuto h1 {
+  margin: 0 0 18px;
+  color: var(--testo-forte);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.contenuto h2 { font-size: 15px; color: var(--testo-forte); margin: 26px 0 8px; }
+.contenuto p, .contenuto li { margin-bottom: 12px; }
+.contenuto ul, .contenuto ol { padding-left: 22px; }
+
+a { color: var(--blu); }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--blu);
+  outline-offset: 2px;
+}
+
+/* Il corpo delle pagine e' l'HTML originale di Drupal: porta con se' i propri
+   style inline, che vanno rispettati e non sovrascritti. Le immagini con
+   float:right vanno contenute, altrimenti sfondano il piede. */
+.corpo-pagina::after { content: ""; display: block; clear: both; }
+.corpo-pagina img { max-width: 100%; }
+.corpo-pagina div { margin-bottom: 0; }
+
+img { max-width: 100%; }
+
+/* Le tabelle ereditate da Drupal usano colspan e rowspan: scorrono da sole,
+   senza trascinare la pagina in orizzontale. */
+table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 14px;
+}
+th, td { border: 1px solid var(--linea); padding: 6px 9px; text-align: left; vertical-align: top; }
+
+iframe { max-width: 100%; border: 1px solid var(--linea); }
+
+details { border: 1px solid var(--linea); padding: 9px 12px; margin: 14px 0; }
+summary { cursor: pointer; font-weight: 700; }
+
+/* --- piede --- */
+.piede {
+  background: var(--piede-fondo);
+  border-top: 3px solid var(--piede-bordo);
+  padding: 10px 0;
+  margin-top: 20px;
+}
+.piede p { margin: 0 0 4px; }
+
+/* --- adattamento agli schermi stretti --- */
+@media (max-width: 760px) {
+  .corpo { flex-direction: column; }
+  .spalla { flex: 1 1 auto; width: 100%; }
+  .spalla > div { display: inline-block; vertical-align: top; margin-right: 14px; }
+  .titolo-sito { height: auto; padding: 6px 0; }
+  .titolo-sito a { font-size: 15px; }
+  /* Su schermi stretti compare la voce di apertura, come nell'originale. */
+  .nav-toggle { display: block; }
+}

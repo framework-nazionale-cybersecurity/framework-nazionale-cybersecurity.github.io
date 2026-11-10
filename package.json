@@ -1,0 +1,22 @@
+{
+  "name": "cybersecurityframework-sito",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sito del Framework Nazionale per la Cybersecurity e la Data Protection",
+  "scripts": {
+    "dev": "astro dev",
+    "anteprima": "astro build && astro preview --host",
+    "anteprima-locale": "astro build && astro preview",
+    "build": "astro build",
+    "check": "astro check",
+    "verifica-url": "node tools/verifica-url.mjs"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.2.5"
+  }
+}

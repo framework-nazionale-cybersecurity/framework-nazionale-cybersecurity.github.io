@@ -1,0 +1,97 @@
+name: Pubblica su GitHub Pages
+
+# ATTENZIONE: questo workflow mette il sito ONLINE.
+#
+# Si avvia SOLO a mano (workflow_dispatch), mai su push. E' voluto: finche' il
+# dominio punta al vecchio server nulla cambia per i visitatori, ma dal momento
+# del cutover una pubblicazione accidentale sarebbe visibile a tutti. Pubblicare
+# deve restare un gesto deliberato, non un effetto collaterale di un commit.
+#
+# Due ambienti, stessa build:
+#   prova       → <org>.github.io, con noindex. Serve a collaudare prima di
+#                 spostare il dominio. L'indirizzo e' pubblico a chi lo conosce
+#                 (Pages non ha siti ad accesso ristretto fuori da Enterprise),
+#                 ma il noindex evita che faccia concorrenza al sito vivo nei
+#                 motori di ricerca: due copie identiche indicizzate sarebbero
+#                 un danno, non un collaudo.
+#   produzione  → il dominio vero, indicizzabile.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ambiente:
+        description: 'Dove pubblicare'
+        required: true
+        type: choice
+        options: [prova, produzione]
+        default: prova
+      conferma:
+        description: 'Scrivi PUBBLICA per confermare la messa online'
+        required: true
+        default: ''
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  controllo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: La conferma e' stata scritta correttamente?
+        run: |
+          if [ "${{ inputs.conferma }}" != "PUBBLICA" ]; then
+            echo "::error::Conferma mancante o errata. Digitare PUBBLICA per procedere."
+            exit 1
+          fi
+
+  build:
+    needs: controllo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+
+      - name: Compila
+        env:
+          # In prova l'URL e' quello assegnato da GitHub all'organizzazione.
+          # Il repository si chiama <org>.github.io apposta: cosi' il sito e'
+          # servito dalla RADICE, come in produzione. I 506 riferimenti che
+          # partono da / nel contenuto catturato da Drupal si romperebbero
+          # tutti se il sito stesse sotto un sottopercorso /nome-repo/.
+          SITE_URL: ${{ inputs.ambiente == 'produzione'
+            && 'https://www.cybersecurityframework.it'
+            || format('https://{0}.github.io', github.repository_owner) }}
+          PUBLIC_AMBIENTE: ${{ inputs.ambiente == 'produzione' && 'produzione' || 'anteprima' }}
+        run: npm run build
+
+      - name: Riepilogo di cosa e' stato compilato
+        run: |
+          echo "### Pubblicazione: ${{ inputs.ambiente }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- pagine generate: $(find dist -name '*.html' | wc -l | tr -d ' ')" >> "$GITHUB_STEP_SUMMARY"
+          echo "- peso: $(du -sh dist | cut -f1)" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+  pubblica:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.ambiente }}
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

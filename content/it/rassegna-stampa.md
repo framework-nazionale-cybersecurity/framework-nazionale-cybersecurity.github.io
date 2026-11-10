@@ -1,0 +1,74 @@
+---
+nid: 5917
+titolo: "Rassegna Stampa"
+lingua: it
+tipo: page
+creato: 2016-02-11
+modificato: 2016-10-01
+formato_originale: full_html
+url_originali:
+  - /node/5917
+  - /rassegna-stampa
+---
+
+Questa pagina raccoglie alcune delle notizie relative al Framework Nazionale e alla sua presentazione del 4 febbraio 2016.
+
+Segui il [@CIS-Sapienza](https://twitter.com/CIS_Sapienza) su twitter per rimanere sempre aggiornato sulle notizie relative al Framework Nazionale per la Cyber Security. [Segnalaci](mailto:staff@cybersecurityframework.it?subject=Segnalazione%20news%20framework) notizie non elencate e saranno aggiunte in questa pagina.
+
+Cybersecurity Framework Shared (NIST):
+
+<iframe allowfullscreen="" frameborder="0" height="315" mozallowfullscreen="" src="https://cdnapisec.kaltura.com/p/684682/sp/68468200/embedIframeJs/uiconf_id/31013851/partner_id/684682?iframeembed=true&amp;playerId=iframeVid&amp;entry_id=1_oflxj19k&amp;flashvars[streamerType]=auto" webkitallowfullscreen="" width="560"></iframe>
+
+(fonte: https://www.nist.gov/video/cybersecurity-framework-shared)
+
+Un Framework Nazionale per la Cyber Security, intervento di Roberto Baldoni (Sapienza, CINI):
+
+ [https://www.youtube.com/watch?v=EKCtRSLXoCM](https://www.youtube.com/watch?v=EKCtRSLXoCM)
+
+Raccolta video interventi della presentazione del 4 febbraio 2016:
+
+[https://www.key4biz.it/italian-cyber-security-speciale-video-sulla-presentazione-del-report-2015/148878/](https://www.key4biz.it/italian-cyber-security-speciale-video-sulla-presentazione-del-report-2015/148878/)
+
+Cybersecurity, arriva il manuale per le aziende: 
+
+[http://www.corrierecomunicazioni.it/digital/39432\_cybersecurity-arriva-il-manuale-per-le-aziende.htm](http://www.corrierecomunicazioni.it/digital/39432_cybersecurity-arriva-il-manuale-per-le-aziende.htm)
+
+L’Italia e la Cyber Security. Video intervista a Roberto Baldoni (Sapienza): 
+
+[https://www.key4biz.it/litalia-e-la-cyber-security-video-intervista-a-roberto-baldoni-sapienza/](https://www.key4biz.it/litalia-e-la-cyber-security-video-intervista-a-roberto-baldoni-sapienza/)
+
+Un Framework Nazionale per la Cyber Security, intervento di Paolo Prinetto, Presidente CINI: 
+
+[https://www.key4biz.it/eventi-video/un-framework-nazionale-per-la-cyber-security-intervento-di-paolo-prinetto-presidente-cini/](https://www.key4biz.it/eventi-video/un-framework-nazionale-per-la-cyber-security-intervento-di-paolo-prinetto-presidente-cini/)
+
+Sapienza, al via framework nazionale per la Cyber Security:
+
+[http://www.askanews.it/cronaca/sapienza-al-via-framework-nazionale-per-la-cyber-security\_711729247.htm](http://www.askanews.it/cronaca/sapienza-al-via-framework-nazionale-per-la-cyber-security_711729247.htm)
+
+Cybersecurity: c’è il framework nazionale:
+
+[http://www.01net.it/cybersecurity-ce-il-framework-nazionale/](http://www.01net.it/cybersecurity-ce-il-framework-nazionale/)
+
+Cosa contiene il Cyber Security Report 2015: 
+
+[http://www.ilsole24ore.com/art/tecnologie/2016-02-04/un-framework-nazionale-la-cyber-security-161321.shtml?uuid=ACfpkhNC](http://www.ilsole24ore.com/art/tecnologie/2016-02-04/un-framework-nazionale-la-cyber-security-161321.shtml?uuid=ACfpkhNC)
+
+Pronto al via il primo Framework nazionale per la cyber sicurezza Paese:
+
+[http://www.forumpa.it/sicurezza/baldoni](http://www.forumpa.it/sicurezza/baldoni)
+
+Sapienza, al via framework nazionale per la Cyber Security:
+
+[http://www.affaritaliani.it/coffee/video/cronache/sapienza-al-via-framework-nazionale-per-la-cyber-security.html](http://www.affaritaliani.it/coffee/video/cronache/sapienza-al-via-framework-nazionale-per-la-cyber-security.html)
+
+Italian Cyber Security Report 2015. Baldoni (Sapienza): ‘Tutti a rischio. Pubblico e privato devono unirsi’:
+
+[https://www.key4biz.it/italian-cyber-security-report-2015-baldoni-sapienza-tutti-a-rischio-pubblico-e-privato-devono-unirsi/148664/](https://www.key4biz.it/italian-cyber-security-report-2015-baldoni-sapienza-tutti-a-rischio-pubblico-e-privato-devono-unirsi/148664/)
+
+Sogei: "Ecco le misure necessarie per avere una PA (cyber) sicura":
+
+http://www.forumpa.it/pa-digitale/sicurezza-sogei-la-cyber-security-nel-contesto-della-pa-italiana-principali-criticita-ed-interventi-necessari
+
+Quotidianosanità: "Reti e computer sanitari sotto attacco. Come garantire la sicurezza dei dati"
+
+http://www.quotidianosanita.it/studi-e-analisi/articolo.php?articolo\_id=42987

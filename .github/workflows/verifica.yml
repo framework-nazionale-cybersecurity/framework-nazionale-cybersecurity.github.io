@@ -1,0 +1,58 @@
+name: Verifica
+
+# Gira a ogni push e su ogni pull request. Non pubblica niente: serve solo a
+# sapere che la build regge e che nessun URL storico e' andato perduto.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Versione fissata di proposito: e' la disciplina che accompagna la
+          # scelta di Astro, per contenere il rischio di dependency rot.
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Compila il sito
+        run: npm run build
+
+      - name: Ogni URL del sito ha una pagina generata?
+        # L'elenco si ricava da content/_reso.json, cioe' dalle pagine
+        # effettivamente catturate dal sito Drupal: e' la stessa sorgente da
+        # cui la rotta genera gli URL, ma letta in modo indipendente, cosi'
+        # un errore nella rotta non si autoconferma.
+        run: |
+          node -e '
+            const fs = require("fs");
+            const reso = JSON.parse(fs.readFileSync("content/_reso.json", "utf8"));
+            let mancanti = 0;
+            for (const url of Object.keys(reso)) {
+              const p = "dist" + (url === "/" ? "" : url.replace(/\/$/, "")) + "/index.html";
+              if (!fs.existsSync(p)) {
+                console.log(`::error::URL senza pagina generata: ${url}`);
+                mancanti++;
+              }
+            }
+            console.log(`URL attesi: ${Object.keys(reso).length}, mancanti: ${mancanti}`);
+            process.exit(mancanti ? 1 : 0);
+          '
+
+      - name: Conserva la build per l'anteprima privata
+        uses: actions/upload-artifact@v4
+        with:
+          name: sito-${{ github.sha }}
+          path: dist/
+          retention-days: 14

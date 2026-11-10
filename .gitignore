@@ -1,0 +1,52 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Dipendenze e build (stack da definire)
+node_modules/
+dist/
+build/
+.cache/
+
+# Variabili d'ambiente e segreti
+.env
+.env.*
+!.env.example
+
+# Chiavi private — non devono MAI entrare nella storia git
+*.pem
+*.key
+id_rsa*
+*.ppk
+
+# Claude Code (impostazioni locali per macchina; .claude/settings.json va versionato)
+.claude/settings.local.json
+
+# Backup e dump della migrazione (fase 0) — DA NON COMMITTARE MAI.
+# La storia git e' permanente e il repo diventera' pubblico al cutover: un dump
+# Drupal contiene hash di password, indirizzi email e credenziali di servizio.
+/backup/
+/mirror/
+*.sql
+*.sql.gz
+*.sql.bz2
+*.dump
+*.mysql
+
+# Log
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Dipendenze degli strumenti di migrazione
+tools/node_modules/
+
+# Cache generata da Astro
+.astro/

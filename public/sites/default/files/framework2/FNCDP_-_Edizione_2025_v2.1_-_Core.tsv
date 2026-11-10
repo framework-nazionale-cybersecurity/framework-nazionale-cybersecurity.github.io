@@ -1,0 +1,148 @@
+Framework Nazionale per la Cybersecurity e la Data Protection - Edizione 2025 (v2.1)
+Una collaborazione tra il Centro di ricerca CIS - Sapienza Università di Roma ed il Laboratorio Nazionale di Cybersecurity del CINI.
+
+Function	Category	Subcategory	Descrizione
+GV			GOVERN (GV): La strategia di gestione del rischio di cybersecurity dell'organizzazione, i suoi obiettivi e le relative policy sono stabilite, comunicate e monitorate.
+GV	OC		Contesto organizzativo (GV.OC): Il contesto - missione, aspettative degli stakeholder, dipendenze e requisiti legali, normativi e contrattuali - che influisce sulle decisioni di gestione del rischio di cybersecurity dell'organizzazione è compreso.
+GV	OC	01	GV.OC-01: La missione dell'organizzazione è compresa e informa la gestione del rischio di cybersecurity.
+GV	OC	02	GV.OC-02: Gli stakeholder interni ed esterni sono noti e le loro esigenze e aspettative riguardo la gestione del rischio di cybersecurity sono comprese e considerate.
+GV	OC	03	GV.OC-03: I requisiti legali, normativi e contrattuali riguardanti la cybersecurity, compresi gli obblighi in materia di privacy e libertà civili, sono compresi e gestiti.
+GV	OC	04	GV.OC-04: Gli obiettivi, le capacità e i servizi critici dai quali gli stakeholder dipendono o che si aspettano dall'organizzazione sono compresi e comunicati.
+GV	OC	05	GV.OC-05: I risultati, le capacità e i servizi dai quali l'organizzazione dipende sono compresi e comunicati.
+GV	RM		Strategia di gestione del rischio (GV.RM): Le priorità, i vincoli, le dichiarazioni sulla tolleranza e la propensione al rischio, e le assunzioni dell'organizzazione sono stabilite, comunicate e utilizzate per supportare le decisioni sul rischio operativo.
+GV	RM	01	GV.RM-01: Gli obiettivi di gestione del rischio sono stabiliti e accettati dagli stakeholder dell'organizzazione.
+GV	RM	02	GV.RM-02: Le dichiarazioni sulla tolleranza e la propensione al rischio sono stabilite, comunicate e mantenute.
+GV	RM	03	GV.RM-03: Le attività e gli esiti della gestione del rischio di cybersecurity sono parte integrante dei processi di gestione del rischio dell'organizzazione.
+GV	RM	04	GV.RM-04: È stabilita e comunicata la direzione strategica che descrive le opzioni appropriate di risposta al rischio.
+GV	RM	05	GV.RM-05: Sono stabiliti canali di comunicazione in tutta l'organizzazione per il rischio di cybersecurity, incluso il rischio derivante dai fornitori e da altre terze parti.
+GV	RM	06	GV.RM-06: È stabilito e comunicato un metodo standardizzato per calcolare, documentare, categorizzare e prioritizzare i rischi di cybersecurity.
+GV	RM	07	GV.RM-07: Le opportunità strategiche (i.e. i rischi positivi) sono caratterizzate e incluse nelle discussioni sul rischio di cybersecurity dell'organizzazione.
+GV	RR		Ruoli, responsabilità e correlati poteri (GV.RR): Sono stabiliti e comunicati i ruoli, le responsabilità e i correlati poteri in materia di cybersecurity per promuovere l'accountability, la valutazione delle prestazioni e il miglioramento continuo.
+GV	RR	01	GV.RR-01: Gli organi di amministrazione e direttivi sono responsabili e rispondono (accountable) per il rischio di cybersecurity e promuovono una cultura consapevole del rischio, etica e in continuo miglioramento.
+GV	RR	02	GV.RR-02: I ruoli, le responsabilità e i correlati poteri relativi alla gestione del rischio di cybersecurity sono stabiliti, comunicati, compresi e applicati. 
+GV	RR	03	GV.RR-03: Sono allocate risorse adeguate, in misura commisurata alla strategia di gestione del rischio di cybersecurity, ai ruoli, alle responsabilità e alle politiche.
+GV	RR	04	GV.RR-04: La cybersecurity è inclusa nelle pratiche delle risorse umane.
+GV	RR	05	DP-GV.RR-05: I ruoli, le responsabilità e i correlati poteri inerenti al trattamento e la protezione dei dati personali sono stabiliti, comunicati, compresi e applicati.
+GV	PO		Politica (GV.PO): La politica di cybersecurity dell'organizzazione è stabilita, comunicata e applicata.
+GV	PO	01	GV.PO-01: La politica per la gestione del rischio di cybersecurity è stabilita in base al contesto organizzativo, alla strategia di cybersecurity e alle priorità, ed è comunicata e applicata.
+GV	PO	02	GV.PO-02: La politica per la gestione del rischio di cybersecurity è revisionata, aggiornata, comunicata e applicata per riflettere i cambiamenti nei requisiti, nelle minacce, nella tecnologia e nella missione dell'organizzazione.
+GV	OV		Supervisione (GV.OV): I risultati delle attività di gestione del rischio di cybersecurity che interessano l'intera organizzazione e le relative prestazioni sono utilizzati per informare, migliorare e adeguare la strategia di gestione del rischio.
+GV	OV	01	GV.OV-01: I risultati della strategia di gestione del rischio di cybersecurity sono revisionati per informare e adeguare la strategia e la direzione.
+GV	OV	02	GV.OV-02: La strategia di gestione del rischio di cybersecurity è revisionata e adeguata per garantire la copertura dei requisiti e dei rischi dell'organizzazione.
+GV	OV	03	GV.OV-03: Le prestazioni relative alla gestione del rischio di cybersecurity dell'organizzazione sono valutate e revisionate per gli adeguamenti necessari.
+GV	SC		Gestione del rischio di cybersecurity della catena di approvvigionamento (GV.SC): I processi di gestione del rischio di cybersecurity della catena di approvvigionamento sono identificati, stabiliti, gestiti, monitorati e migliorati dagli stakeholder dell'organizzazione.
+GV	SC	01	GV.SC-01: Sono stabiliti e accettati dagli stakeholder dell'organizzazione il programma, la strategia, gli obiettivi, le politiche e i processi di gestione del rischio di cybersecurity della catena di approvvigionamento.
+GV	SC	02	GV.SC-02: I ruoli e le responsabilità in materia di cybersecurity per fornitori, clienti e partner sono stabiliti, comunicati e coordinati internamente ed esternamente.
+GV	SC	03	GV.SC-03: La gestione del rischio di cybersecurity della catena di approvvigionamento è integrata nella gestione del rischio dell'organizzazione e di cybersecurity, nella valutazione del rischio e nei processi di miglioramento.
+GV	SC	04	GV.SC-04: I fornitori sono noti e prioritizzati in base alla criticità.
+GV	SC	05	GV.SC-05: I requisiti per affrontare i rischi di cybersecurity nella catena di approvvigionamento sono stabiliti, prioritizzati e integrati nei contratti e in altri tipi di accordi con i fornitori e altre terze parti rilevanti.
+GV	SC	06	GV.SC-06: Pianificazione e due diligence sono svolte per ridurre i rischi prima di intraprendere rapporti formali con i fornitori o altre terze parti.
+GV	SC	07	GV.SC-07: I rischi posti da un fornitore, dai suoi prodotti e servizi e da altre terze parti sono compresi, registrati, prioritizzati, valutati, trattati e monitorati nel corso della relazione.
+GV	SC	08	GV.SC-08: I fornitori e le altre terze parti rilevanti sono inclusi nelle attività di pianificazione, risposta e ripristino relative agli incidenti.
+GV	SC	09	GV.SC-09: Le pratiche di sicurezza della catena di approvvigionamento sono integrate nei programmi di  gestione del rischio di cybersecurity e dell'organizzazione e le loro prestazioni sono monitorate durante l'intero ciclo di vita dei prodotti e dei servizi tecnologici.
+GV	SC	10	GV.SC-10: I piani di gestione del rischio di cybersecurity della catena di approvvigionamento includono le disposizioni per le attività da svolgere dopo la conclusione di un accordo di partnership o di servizio.
+ID			IDENTIFY (ID): I rischi attuali di cybersecurity dell'organizzazione sono compresi.
+ID	AM		Gestione degli asset (ID.AM): Gli asset (ad esempio, dati, hardware, software, sistemi, infrastrutture, servizi, persone) che consentono all'organizzazione di raggiungere gli obiettivi di business sono identificati e gestiti in coerenza con la loro importanza rispetto agli obiettivi organizzativi e alla strategia sul rischio dell'organizzazione.
+ID	AM	01	ID.AM-01: Sono mantenuti gli inventari dell'hardware gestito dall'organizzazione.
+ID	AM	02	ID.AM-02: Sono mantenuti gli inventari del software, dei servizi e dei sistemi gestiti dall'organizzazione.
+ID	AM	03	ID.AM-03: Sono mantenute le rappresentazioni delle comunicazioni di rete e dei flussi di dati di rete interni ed esterni, autorizzati dall'organizzazione.
+ID	AM	04	ID.AM-04: Sono mantenuti gli inventari dei servizi erogati dai fornitori.
+ID	AM	05	ID.AM-05: Gli asset sono prioritizzati in base alla categorizzazione, alla criticità, alle risorse e all'impatto sulla missione.
+ID	AM	07	ID.AM-07: Sono mantenuti gli inventari dei dati e dei relativi metadati per selezionati tipi di dati.
+ID	AM	08	ID.AM-08: I sistemi, l'hardware, il software, i servizi e i dati sono gestiti durante il loro intero ciclo di vita.
+ID	AM	09	DP-ID.AM-09: I trattamenti di dati personali sono identificati e catalogati
+ID	RA		Valutazione del rischio (Risk Assessment) (ID.RA): È compreso il rischio di cybersecurity al quale l'organizzazione, gli asset e le persone sono esposti.
+ID	RA	01	ID.RA-01: Le vulnerabilità negli asset sono identificate, confermate e registrate.
+ID	RA	02	ID.RA-02: Le informazioni di cyber threat intelligence sono ricevute da forum e fonti di condivisione delle informazioni.
+ID	RA	03	ID.RA-03: Le minacce interne ed esterne all'organizzazione sono identificate e registrate.
+ID	RA	04	ID.RA-04: I potenziali impatti e le probabilità di sfruttamento delle vulnerabilità da parte delle minacce sono identificati e registrati.
+ID	RA	05	ID.RA-05: Minacce, vulnerabilità, probabilità e impatti sono utilizzati per comprendere il rischio inerente e per informare la prioritizzazione della risposta al rischio.
+ID	RA	06	ID.RA-06: Le risposte al rischio sono scelte, prioritizzate, pianificate, monitorate e comunicate.
+ID	RA	07	ID.RA-07: Le modifiche e le eccezioni sono gestite, valutate per il loro impatto sul rischio, registrate e tracciate.
+ID	RA	08	ID.RA-08: Sono stabiliti processi per la ricezione, l'analisi e la risposta alle divulgazioni di vulnerabilità.
+ID	RA	09	ID.RA-09: L'autenticità e l'integrità di hardware e software sono valutate prima dell'acquisizione e dell'uso.
+ID	RA	10	ID.RA-10: I fornitori critici sono valutati prima dell'acquisizione.
+ID	RA	11	DP-ID.RA-11: Viene effettuata una valutazione di impatto sulla protezione dei dati personali.
+ID	IM		Miglioramento (ID.IM): I miglioramenti ai processi, alle procedure e alle attività di gestione del rischio di cybersecurity dell'organizzazione sono identificati in tutte le funzioni del framework.
+ID	IM	01	ID.IM-01: Sono identificati miglioramenti in esito alle valutazioni.
+ID	IM	02	ID.IM-02: Sono identificati miglioramenti in esito ai test e alle esercitazioni di sicurezza, compresi quelli effettuati in coordinamento con i fornitori e le terze parti interessate.
+ID	IM	03	ID.IM-03: Sono identificati miglioramenti dall'esecuzione di processi, procedure e attività operativi.
+ID	IM	04	ID.IM-04: I piani di risposta agli incidenti e gli altri piani di cybersecurity che impattano le operazioni sono stabiliti, comunicati, mantenuti e migliorati.
+ID	DM		Data Management (DP-ID.DM): i dati personali sono trattati attraverso processi definiti, in coerenza con le normative di riferimento.
+ID	DM	01	DP-ID.DM-01: Il ciclo di vita dei dati è definito e documentato.
+ID	DM	02	DP-ID.DM-02: Sono definiti, implementati e documentati i processi riguardanti l'informazione dell'interessato in merito al trattamento dei dati.
+ID	DM	03	DP-ID.DM-03: Sono definiti, implementati e documentati i processi di raccolta e revoca del consenso dell'interessato al trattamento di dati.
+ID	DM	04	DP-ID.DM-04: Sono definiti, implementati e documentati i processi per l'esercizio dei diritti (accesso, rettifica, cancellazione, ecc.) dell'interessato.
+ID	DM	05	DP-ID.DM-05: Sono definiti, implementati e documentati i processi di trasferimento dei dati in ambito internazionale.
+PR			PROTECT (PR): Sono adottate misure di protezione per gestire i rischi di cybersecurity dell'organizzazione.
+PR	AA		Gestione delle identità, autenticazione e controllo degli accessi (PR.AA): L'accesso agli asset fisici e logici è limitato agli utenti, ai servizi e all'hardware autorizzati, e gestito in misura appropriata alla valutazione del rischio di accesso non autorizzato.
+PR	AA	01	PR.AA-01: Le identità e le credenziali degli utenti, dei servizi e dell'hardware autorizzati sono gestite dall'organizzazione.
+PR	AA	02	PR.AA-02: Le identità sono verificate e associate alle credenziali in base al contesto delle interazioni.
+PR	AA	03	PR.AA-03: Utenti, servizi e hardware sono autenticati.
+PR	AA	04	PR.AA-04: Le asserzioni di identità sono protette, trasmesse e verificate.
+PR	AA	05	PR.AA-05: I permessi, i diritti e le autorizzazioni di accesso sono definiti in una politica, gestiti, applicati e rivisti e incorporano i principi del minimo privilegio e della separazione dei compiti.
+PR	AA	06	PR.AA-06: L'accesso fisico agli asset è gestito, monitorato e applicato in misura appropriata al rischio.
+PR	AT		Consapevolezza e formazione (PR.AT): Il personale dell'organizzazione è sensibilizzato e formato sulla cybersecurity in modo da poter svolgere i propri compiti inerenti alla cybersecurity.
+PR	AT	01	PR.AT-01: Il personale è sensibilizzato e formato in modo da possedere le conoscenze e le competenze per svolgere compiti di carattere generale tenendo conto dei rischi di cybersecurity.
+PR	AT	02	PR.AT-02: Gli individui che ricoprono ruoli specializzati sono sensibilizzati e formati in modo da possedere le conoscenze e le competenze per svolgere i pertinenti compiti tenendo conto dei rischi di cybersecurity.
+PR	DS		Sicurezza dei dati (PR.DS): I dati sono gestiti in modo coerente con la strategia sul rischio dell'organizzazione per proteggere la riservatezza, l'integrità e la disponibilità delle informazioni.
+PR	DS	01	PR.DS-01: La riservatezza, l'integrità e la disponibilità dei dati a riposo (data-at-rest) sono protette.
+PR	DS	02	PR.DS-02: La riservatezza, l'integrità e la disponibilità dei dati in transito (data-in-transit) sono protette.
+PR	DS	10	PR.DS-10: La riservatezza, l'integrità e la disponibilità dei dati in uso (data-in-use) sono protette.
+PR	DS	11	PR.DS-11: I backup dei dati sono creati, protetti, mantenuti e verificati.
+PR	PS		Sicurezza delle piattaforme (PR.PS): L'hardware, il software (ad esesempio firmware, sistemi operativi, applicazioni) e i servizi delle piattaforme fisiche e virtuali sono gestiti in modo coerente con la strategia sul rischio dell'organizzazione per proteggere la loro riservatezza, integrità e disponibilità.
+PR	PS	01	PR.PS-01: Sono stabilite e applicate pratiche di gestione della configurazione.
+PR	PS	02	PR.PS-02: Il software è mantenuto, sostituito e rimosso in base al rischio.
+PR	PS	03	PR.PS-03: L'hardware è mantenuto, sostituito e rimosso in base al rischio.
+PR	PS	04	PR.PS-04: I registri di log sono generati e resi disponibili per il monitoraggio continuo.
+PR	PS	05	PR.PS-05: Sono impedite l'installazione ed esecuzione di software non autorizzato.
+PR	PS	06	PR.PS-06: Le pratiche di sviluppo sicuro del software sono integrate e le loro prestazioni sono monitorate durante l'intero ciclo di vita del software.
+PR	IR		Resilienza dell'infrastruttura tecnologica (PR.IR): Le architetture di sicurezza sono gestite in accordo con la strategia sul rischio dell'organizzazione per proteggere la riservatezza, l'integrità e la disponibilità degli asset e la resilienza organizzativa.
+PR	IR	01	PR.IR-01: Le reti e gli ambienti sono protetti dall'accesso logico e dall'uso non autorizzati.
+PR	IR	02	PR.IR-02: Gli asset tecnologici dell'organizzazione sono protetti dalle minacce ambientali.
+PR	IR	03	PR.IR-03: Sono implementati meccanismi per soddisfare i requisiti di resilienza in situazioni normali e avverse.
+PR	IR	04	PR.IR-04: È mantenuta un'adeguata capacità di risorse per garantire la disponibilità.
+DE			DETECT (DE): Possibili attacchi e compromissioni di cybersecurity sono rilevati e analizzati.
+DE	CM		Monitoraggio continuo (DE.CM): Gli asset sono monitorati per individuare anomalie, indicatori di compromissione e altri eventi potenzialmente avversi.
+DE	CM	01	DE.CM-01: Le reti e i servizi di rete sono monitorati per individuare eventi potenzialmente avversi.
+DE	CM	02	DE.CM-02: L'ambiente fisico è monitorato per individuare eventi potenzialmente avversi.
+DE	CM	03	DE.CM-03: L'attività del personale e l'utilizzo della tecnologia, sono monitorati per individuare eventi potenzialmente avversi.
+DE	CM	06	DE.CM-06: Le attività e i servizi dei fornitori di servizi esterni sono monitorati per individuare eventi potenzialmente avversi.
+DE	CM	09	DE.CM-09: L'hardware e il software di elaborazione, gli ambienti di runtime e i loro dati sono monitorati per individuare eventi potenzialmente avversi.
+DE	AE		Analisi degli eventi avversi (DE.AE): Anomalie, indicatori di compromissione e altri eventi potenzialmente avversi sono analizzati per caratterizzare gli eventi e rilevare gli incidenti di cybersecurity.
+DE	AE	02	DE.AE-02: Gli eventi potenzialmente avversi sono analizzati per meglio comprenderne le attività associate.
+DE	AE	03	DE.AE-03: Le informazioni sono correlate da più fonti.
+DE	AE	04	DE.AE-04: L'impatto e la portata stimati degli eventi avversi sono compresi.
+DE	AE	06	DE.AE-06: Le informazioni sugli eventi avversi sono fornite al personale e agli strumenti autorizzati.
+DE	AE	07	DE.AE-07: La cyber threat intelligence e le altre informazioni contestuali sono integrate nell'analisi.
+DE	AE	08	DE.AE-08: Gli incidenti sono dichiarati quando gli eventi avversi soddisfano i criteri definiti per gli incidenti.
+RS			RESPOND (RS): Sono intraprese azioni in risposta a un incidente di cybersecurity rilevato.
+RS	MA		Gestione degli incidenti (RS.MA): Le risposte agli incidenti di cybersecurity rilevati sono gestite.
+RS	MA	01	RS.MA-01: Il piano di risposta agli incidenti è eseguito in coordinamento con le terze parti interessate una volta dichiarato un incidente.
+RS	MA	02	RS.MA-02: I report sugli incidenti sono sottoposti a triage e convalidati.
+RS	MA	03	RS.MA-03: Gli incidenti sono categorizzati e prioritizzati.
+RS	MA	04	RS.MA-04: Gli incidenti sono scalati (assegnati a meccanismi di risposta con risorse crescenti) o elevati (passati in gestione a un livello superiore) a seconda delle necessità.
+RS	MA	05	RS.MA-05: Sono applicati i criteri per l'avvio del ripristino dagli incidenti.
+RS	AN		Analisi degli incidenti (RS.AN): Sono condotte indagini per garantire una risposta efficace e supportare le attività forensi e di ripristino.
+RS	AN	03	RS.AN-03: È eseguita un'analisi per stabilire cosa è avvenuto durante un incidente e la causa principale dell'incidente.
+RS	AN	06	RS.AN-06: Le azioni eseguite durante un'investigazione sono registrate e l'integrità e la provenienza delle registrazioni sono preservate.
+RS	AN	07	RS.AN-07: I dati e i metadati degli incidenti sono raccolti e la loro integrità e provenienza sono preservate.
+RS	AN	08	RS.AN-08: La magnitudo di un incidente è stimata e convalidata.
+RS	CO		Segnalazione e comunicazione della risposta agli incidenti (RS.CO): Le attività di risposta sono coordinate con gli stakeholder interni ed esterni come richiesto da leggi, regolamenti o politiche.
+RS	CO	02	RS.CO-02: Gli stakeholder interni ed esterni sono informati degli incidenti.
+RS	CO	03	RS.CO-03: Le informazioni sono condivise con gli stakeholder interni ed esterni designati.
+RS	CO	06	DP-RS.CO-06: Gli incidenti che si configurano come violazioni di dati personali sono documentati ed eventualmente vengono informate le autorità di riferimento e gli interessati.
+RS	MI		Mitigazione degli incidenti (RS.MI): Sono eseguite attività per prevenire l'espansione di un evento e mitigarne gli effetti.
+RS	MI	01	RS.MI-01: Gli incidenti vengono contenuti.
+RS	MI	02	RS.MI-02: Gli incidenti vengono eradicati.
+RC			RECOVER (RC): Gli asset e le operazioni interessati da un incidente di cybersecurity sono ripristinati.
+RC	RP		Esecuzione del piano di ripristino dagli incidenti (RC.RP): Le attività di ripristino sono eseguite per garantire la disponibilità operativa dei sistemi e dei servizi interessati da incidenti di cybersecurity.
+RC	RP	01	RC.RP-01: La parte del piano di risposta agli incidenti relativa al rispristino viene eseguita una volta avviata dal processo di risposta agli incidenti.
+RC	RP	02	RC.RP-02: Le azioni di ripristino sono selezionate, contestualizzate, prioritizzate e eseguite.
+RC	RP	03	RC.RP-03: L'integrità dei backup e delle altre risorse di ripristino è verificata prima che siano utilizzati per il ripristino.
+RC	RP	04	RC.RP-04: Le funzioni critiche per la mission dell'organizzazione e la gestione del rischio di cybersecurity sono considerate per stabilire le norme operative post-incidente.
+RC	RP	05	RC.RP-05: L'integrità degli asset ripristinati è verificata, i sistemi e i servizi sono ripristinati e lo stato operativo normale viene confermato.
+RC	RP	06	RC.RP-06: La conclusione del ripristino dell'incidente viene dichiarata sulla base di criteri definiti e la documentazione relativa all'incidente è completata.
+RC	CO		Comunicazione sul ripristino dagli incidenti (RC.CO): Le attività di ripristino sono coordinate con le parti interne ed esterne.
+RC	CO	03	RC.CO-03: Le attività di ripristino e i progressi nel ripristino delle capacità operative sono comunicati agli stakeholder interni ed esterni designati.
+RC	CO	04	RC.CO-04: Gli aggiornamenti pubblici sul ripristino dagli incidenti sono condivisi utilizzando modalità e messaggi approvati.

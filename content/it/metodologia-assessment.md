@@ -1,0 +1,37 @@
+---
+nid: 5926
+titolo: "Metodologia per il cybersecurity assessment"
+lingua: it
+tipo: home_page
+creato: 2021-09-20
+modificato: 2021-09-24
+formato_originale: full_html
+url_originali:
+  - /metodologia-assessment
+  - /node/5926
+---
+
+ll rischio legato al verificarsi di attacchi informatici che possano compromettere la sicurezza di informazioni o operazioni è una realtà con cui tutte le organizzazioni, sia pubbliche che private ed operanti nei più diversi settori produttivi, si confrontano ormai giornalmente. Il forte impulso allo spostamento online delle attività di business, causato da maggiori opportunità di sviluppo, piuttosto che da fattori contingenti come il perdurare dell’emergenza sanitaria provocata dal COVID, ha causato, indirettamente, anche un aumento del numero e della magnitudo degli attacchi informatici.
+
+All'interno del panorama nazionale italiano il Framework Nazionale per la Cybersecurity e la Data Protection rappresenta un punto di riferimento adottato da realtà fortemente eterogenee (dalla grande P.A. alla piccola impresa) come strumento per l’organizzazione della propria strategia di difesa rispetto alle minacce cibernetiche. Le recenti evoluzioni normative (e.g. NIS e recente "perimetro nazionale di sicurezza cibernetica"), che in diversi settori hanno imposto vincoli legati alla gestione della sicurezza dei sistemi ICT, hanno ulteriormente messo al centro dell’attenzione il Framework. Qualunque sia la natura del framework di cybersecurity che un’organizzazione adotta, la stessa si confronterà inevitabilmente con la necessità di valutare quanto le misure di sicurezza attualmente implementate le permettano di soddisfare i requisiti stabiliti dall’obiettivo finale. Questa pratica è nota con il nome di cybersecurity assessment, e permette di valutare periodicamente il progresso nell’implementazione di un programma volto all’incremento del livello di sicurezza.
+
+![Schema Metodologia](/sites/default/files/metodologia_schema.png)
+
+Questa pagina introduce una metodologia di cybersecurity assessment basata sul Framework Nazionale, ovvero un percorso che le organizzazioni possono seguire per applicare lo stesso al contesto di riferimento e misurare la propria postura in termini di cybersecurity. Tale metodologia introduce diversi elementi innovativi, strutturando le sue attività in tre fasi: Contestualizzazione, Misura, Valutazione.
+
+-   **Contestualizzazione**: in questa fase la metodologia seleziona e valuta, in termini di priorità e maturità, le subcategory del Framework Nazionale di interesse rispetto alla realtà di riferimento attraverso la combinazione di prototipi di contestualizzazione esistenti, o la definizione di nuovi, tutti basati sulle informative reference generali e su quelle specifiche del proprio settore. Per ciascuna subcategory vengono successivamente individuati uno o più controlli (cioè azioni da intraprendere e quindi da "controllare" per la loro completa realizzazione) atti a soddisfare le prescrizioni indicate nei prototipi e, dunque, a raggiungere gli obiettivi di sicurezza fissati. Infine, vengono definite le priorità di intervento per le subcategory selezionate. Il documento propone in tal senso una metodologia specifica per la definizione del livello di priorità delle singole subcategory. Il risultato di tale processo di selezione e individuazione rappresenta il Profilo Target ovvero l’obiettivo desiderato cui tendere e da considerare per la realizzazione dell’assessment (cioè l'analisi dinamica di quanto fatto e quanto ancora da fare) nelle fasi successive.
+-   **Misura**: in questa fase si rileva la distanza tra lo stato attuale e lo stato desiderato. Uno o più intervistatori provvedono, tramite l’utilizzo di questionari formulati in base al profilo target, a valutare il livello di raggiungimento e realizzazione dei controlli individuati. L’output di questa fase è il profilo attuale, ovvero una sintesi della postura di sicurezza dell’organizzazione sulla base dei controlli e delle subcategory individuate al momento dell’assessment.
+-   **Valutazione**: nella fase finale è possibile leggere i risultati ottenuti nella fase precedente tramite una valutazione della distanza tra il profilo attuale e il profilo target. Il risultato si sostanzia in un punteggio di completamento delle azioni individuate e in un ulteriore punteggio che rappresenta il grado di maturità con cui le suddette azioni sono realizzate.
+
+La struttura della metodologia proposta abilita una serie di vantaggi che la distinguono da altre metodologie e framework esistenti e la rendono non solo integrabile con esse, ma anche punto centrale dell’assessment da cui poi si potranno proiettare i risultati sugli altri framework:
+
+-   la metodologia proposta permette di interpretare il risultato di una singola fase di misura da diversi punti di vista (gli "ambiti") abilitando una visione comune sulla postura dell'organizzazione declinabile secondo le necessità;
+-   la metodologia permette la confrontabilità di assessment successivi basati su contestualizzazioni identiche o compatibili, permettendo all'organizzazione di valutare quantitativamente il progresso nell'implementazione di una strategia di cybersecurity;
+-   la metodologia abilita alla confrontabilità di assessment di organizzazioni diverse che condividono (completamente o in parte) una contestualizzazione, permettendo, ad esempio, la valutazione del livello di preparazione di un fornitore;
+-   la metodologia è rilasciata in forma completamente gratuita ed aperta.
+
+**Scarica i contenuti**:
+
+-   [Metodologia per il cybersecurity assessment con il Framework Nazionale per la Cybersecurity e la Data Protection](/sites/default/files/Metodologia_Assessment_Framework_Nazionale_-_v1.0.pdf)
+
+Per ulteriori informazioni: [info@cybersecurityframework.it](mailto:info@cybersecurityframework.it)
