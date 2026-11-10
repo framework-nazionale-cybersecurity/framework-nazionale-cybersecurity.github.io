@@ -75,8 +75,16 @@ jobs:
         run: npm run build
 
       - name: Riepilogo di cosa e' stato compilato
+        env:
+          SITE_URL: ${{ inputs.ambiente == 'produzione' && 'https://www.cybersecurityframework.it' || format('https://{0}.github.io', github.repository_owner) }}
+          PUBLIC_AMBIENTE: ${{ inputs.ambiente == 'produzione' && 'produzione' || 'anteprima' }}
         run: |
           echo "### Pubblicazione: ${{ inputs.ambiente }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- SITE_URL: \`$SITE_URL\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- PUBLIC_AMBIENTE: \`$PUBLIC_AMBIENTE\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- noindex nella home: $(grep -c 'noindex' dist/index.html || true)  (0 atteso in produzione)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- canonico: \`$(grep -oE 'rel=\"canonical\" href=\"[^\"]*\"' dist/index.html | head -1)\`" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "- pagine generate: $(find dist -name '*.html' | wc -l | tr -d ' ')" >> "$GITHUB_STEP_SUMMARY"
           echo "- peso: $(du -sh dist | cut -f1)" >> "$GITHUB_STEP_SUMMARY"
@@ -89,8 +97,13 @@ jobs:
   pubblica:
     needs: build
     runs-on: ubuntu-latest
+    # L'environment DEVE chiamarsi github-pages: e' quello a cui GitHub Pages
+    # associa il sito servito. Con un nome diverso il deploy viene registrato
+    # ma il sito non cambia — che e' esattamente cio' che e' successo il
+    # 10 novembre 2026 pubblicando in produzione. La distinzione fra prova e
+    # produzione resta dov'e' utile, cioe' nella build.
     environment:
-      name: ${{ inputs.ambiente }}
+      name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - id: deploy
