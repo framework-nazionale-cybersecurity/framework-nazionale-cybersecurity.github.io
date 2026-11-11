@@ -1,30 +1,33 @@
 ---
 /**
- * Impaginazione del porting fedele.
+ * Impaginazione del sito.
  *
- * Riproduce l'aspetto del tema Drupal `execute_responsive_theme` con CSS
- * proprio, misurato sugli stili calcolati del sito vivo. Non ne riusa il
- * foglio di stile: e' un tema commerciale, e il repository diventera' pubblico.
- * Il risultato deve somigliare all'originale, non discenderne.
- *
- * Menu e spalla NON sono ricostruiti qui: arrivano gia' resi da Drupal,
- * catturati URL per URL. Il menu cambia fra italiano e inglese, evidenzia la
- * voce attiva e il selettore di lingua punta alla traduzione: regole che
- * riscritte a mano sarebbero sei occasioni di sbagliare in silenzio.
- *
- * Il revamp resta previsto, ma dopo la messa in sicurezza.
+ * Riproduce l'aspetto del sito Drupal originale con CSS proprio. Menu e spalla
+ * sono componenti alimentati da file di dati (src/dati/), le pagine sono
+ * Markdown: per cambiare l'aspetto del sito si interviene qui, nei componenti e
+ * in public/stili/sito.css, senza toccare i contenuti.
  */
+import Menu from '../componenti/Menu.astro';
+import Spalla from '../componenti/Spalla.astro';
+
 interface Props {
   titolo: string;
   lingua: 'it' | 'en';
   descrizione?: string;
   canonico?: string;
   noindex?: boolean;
-  menu: string;
-  spalla: string;
+  /** Indirizzo della pagina corrente. */
+  url: string;
+  /** Dati della pagina, servono al menu per voce attiva e bandierine. */
+  pagina: {
+    lingua: 'it' | 'en' | 'und';
+    indirizzi: string[];
+    rinvii: string[];
+    traduzione?: string;
+  };
 }
 
-const { titolo, lingua, descrizione, canonico, noindex = false, menu, spalla } = Astro.props;
+const { titolo, lingua, descrizione, canonico, noindex = false, url, pagina } = Astro.props;
 const anteprima = import.meta.env.PUBLIC_AMBIENTE === 'anteprima';
 
 const NOME_SITO = 'Framework Nazionale per la Cybersecurity e la Data Protection';
@@ -58,11 +61,11 @@ const NOME_SITO = 'Framework Nazionale per la Cybersecurity e la Data Protection
     </div>
 
     <div class="banda-menu">
-      <div class="contenitore menu_wrapper" set:html={menu} />
+      <div class="contenitore menu_wrapper"><Menu url={url} pagina={pagina} /></div>
     </div>
 
     <div class="contenitore corpo">
-      <aside class="spalla region-sidebar-first" set:html={spalla} />
+      <aside class="spalla region-sidebar-first"><Spalla /></aside>
       <main id="contenuto" class="contenuto">
         <slot />
       </main>

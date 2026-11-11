@@ -1,0 +1,95 @@
+---
+/**
+ * Menu principale e selettore di lingua.
+ *
+ * Le voci vengono da src/dati/menu.yaml. Tutto il resto e' calcolato:
+ *
+ *  - la voce attiva e' quella che punta alla pagina corrente (o a uno dei suoi
+ *    indirizzi storici: per questo la home evidenzia «Framework ed. 2025»);
+ *  - la bandierina dell'altra lingua punta alla traduzione, se la pagina ne
+ *    dichiara una; altrimenti resta spenta;
+ *  - le pagine neutre ("und") puntano a se stesse, con o senza /en.
+ *
+ * Regole ricavate dalle 23 varianti di menu prodotte dal sito Drupal e
+ * verificate contro di esse.
+ */
+import { getEntry } from 'astro:content';
+
+interface Props {
+  url: string;
+  pagina: {
+    lingua: 'it' | 'en' | 'und';
+    indirizzi: string[];
+    rinvii: string[];
+    traduzione?: string;
+  };
+}
+
+const { url, pagina } = Astro.props;
+const inglese = url === '/en' || url.startsWith('/en/');
+const lingua = inglese ? 'en' : 'it';
+
+const menu = await getEntry('menu', lingua);
+if (!menu) throw new Error(`Manca il menu "${lingua}" in src/dati/menu.yaml`);
+const voci = menu.data.voci;
+
+const propri = new Set([...pagina.indirizzi, ...pagina.rinvii]);
+const attiva = (v: (typeof voci)[number]) => v.evidenzia && propri.has(v.indirizzo);
+
+let versioneIt: string | undefined;
+let versioneEn: string | undefined;
+if (pagina.lingua === 'und') {
+  const base = inglese ? url.replace(/^\/en/, '') || '/' : url;
+  versioneIt = base;
+  versioneEn = base === '/' ? '/en' : '/en' + base;
+} else if (pagina.lingua === 'it') {
+  versioneIt = pagina.indirizzi[0];
+  versioneEn = pagina.traduzione;
+} else {
+  versioneEn = pagina.indirizzi[0];
+  versioneIt = pagina.traduzione;
+}
+
+const bandierine = [
+  { codice: 'en', posizione: 'first', nome: 'English', href: versioneEn },
+  { codice: 'it', posizione: 'last', nome: 'Italiano', href: versioneIt },
+];
+---
+
+<div class="menu_inner_wrap clearfix">
+  <div class="region region-search">
+    <div id="block-locale-language" class="block block-locale">
+      <div class="content">
+        <ul class="language-switcher-locale-url">
+          {bandierine.map((b) => (
+            <li class:list={[b.codice, b.posizione, { active: b.codice === lingua }]}>
+              {b.href ? (
+                <a href={b.href} class:list={['language-link', { active: b.href === url }]} hreflang={b.codice}>
+                  <img class="language-icon" src={`/sites/all/modules/languageicons/flags/${b.codice}.png`} width="30" height="24" alt={b.nome} title={b.nome} />
+                </a>
+              ) : (
+                <span class="language-link locale-untranslated">
+                  <img class="language-icon" src={`/sites/all/modules/languageicons/flags/${b.codice}.png`} width="30" height="24" alt={b.nome} title={b.nome} />
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <nav id="main-menu" role="navigation">
+    <a class="nav-toggle" href="#">Navigation</a>
+    <div class="menu-navigation-container">
+      <ul class="menu">
+        {voci.map((v, i) => (
+          <li class:list={[{ first: i === 0, last: i === voci.length - 1 }, 'leaf', { 'active-trail': attiva(v) }]}>
+            <a href={v.indirizzo} title={v.suggerimento} class:list={{ 'active-trail': attiva(v), active: attiva(v) }}>{v.titolo}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </nav>
+</div>

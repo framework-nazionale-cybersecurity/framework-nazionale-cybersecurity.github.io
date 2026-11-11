@@ -1,15 +1,11 @@
 ---
-nid: 5923
 titolo: "Modello di stima dei costi di applicazione dei Controlli Essenziali di Cybersecurity"
 lingua: und
-tipo: page
-creato: 2017-04-07
-modificato: 2017-04-07
-formato_originale: filtered_html
-url_originali:
-  - /en/modelloStimaCosti
-  - /en/node/5923
+indirizzi:
   - /modelloStimaCosti
+  - /en/modelloStimaCosti
+rinvii:
+  - /en/node/5923
   - /node/5923
 ---
 
@@ -20,3 +16,9 @@ Si consiglia di partire dal [Modello dei costi per l'Azienda tipo 1](/sites/defa
 Si consiglia di partire dal [Modello dei costi per l'Azienda tipo 2](/sites/default/files/Modello%20azienda%20tipo%202.xlsx) se si è almeno una media impresa. 
 
 Per dettagli sull'azienda tipo 1 e l'azienda tipo 2 si faccia riferimento al Capitolo 4 del [Cybersecurity Report 2016.](/sites/default/files/csr2016web.pdf)
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;

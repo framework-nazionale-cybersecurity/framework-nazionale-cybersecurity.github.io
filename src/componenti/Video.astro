@@ -1,0 +1,16 @@
+---
+/**
+ * Video incorporato da un servizio esterno.
+ *
+ *   <Video src="https://..." />
+ */
+interface Props {
+  src: string;
+  larghezza?: number;
+  altezza?: number;
+}
+
+const { src, larghezza = 560, altezza = 315 } = Astro.props;
+---
+
+<iframe src={src} width={larghezza} height={altezza} frameborder="0" allowfullscreen></iframe>

@@ -1,14 +1,9 @@
 ---
-nid: 496
 titolo: "Mappa del sito"
 lingua: it
-tipo: page
-creato: 2011-02-04
-modificato: 2011-06-22
-formato_originale: nessuno
-url_originali:
+indirizzi:
   - /mappa-del-sito
+rinvii:
   - /node/496
 ---
-
 

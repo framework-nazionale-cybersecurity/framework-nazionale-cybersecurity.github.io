@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import mdx from '@astrojs/mdx';
 
 /**
  * L'URL del sito cambia secondo l'ambiente, la build no.
@@ -33,7 +34,15 @@ export default defineConfig({
     routing: { prefixDefaultLocale: false },
   },
 
+  // Niente correzione tipografica automatica: trasformerebbe gli apostrofi in
+  // apostrofi curvi e i tre punti in un'ellissi, cambiando il testo rispetto
+  // all'originale. Vale anche per le pagine .mdx, che ereditano questa config.
+  markdown: { smartypants: false },
+
   integrations: [
+    // Markdown che accetta componenti: serve alle poche pagine con immagini
+    // dimensionate o video incorporati. Le altre restano .md semplici.
+    mdx(),
     sitemap({
       // Le pagine di rinvio non vanno in sitemap: servono a non rompere i
       // link esistenti, non a essere indicizzate. Sono i vecchi /node/NNNN

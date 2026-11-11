@@ -1,0 +1,55 @@
+# Blocchi della colonna di sinistra, nell'ordine in cui compaiono.
+#
+# Ogni blocco ha un nome a piacere (la riga che finisce con ":") e uno di due
+# tipi:
+#
+#   tipo: logo        un'immagine che porta a un sito
+#     immagine        percorso dell'immagine
+#     collegamento    dove porta il clic
+#
+#   tipo: download    un testo seguito dalla copertina di un documento
+#     testo           la frase sopra la copertina
+#     copertina       percorso dell'immagine di copertina
+#     documento       percorso del file da scaricare
+#
+#   descrizione       (facoltativo, per entrambi) testo alternativo
+#                     dell'immagine, letto dagli screen reader
+#
+# Per aggiungere un download basta copiare un blocco "download" e cambiarne
+# nome, testo, copertina e documento.
+
+logo-cis:
+  tipo: logo
+  immagine: /sites/default/files/logocisGrande.png
+  collegamento: http://www.cis.uniroma1.it
+
+logo-cini:
+  tipo: logo
+  immagine: /sites/default/files/logo%20lab%20lungo.png
+  collegamento: https://www.consorzio-cini.it/index.php/it/lab-nazionali/lab-cyber-security-2
+
+metodologia:
+  tipo: download
+  testo: "Scarica la Metodologia per il Cybersecurity Assessment:"
+  copertina: /sites/default/files/cover_metodologia.png
+  documento: /sites/default/files/Metodologia_Assessment_Framework_Nazionale_-_v1.0.pdf
+
+framework-2019:
+  tipo: download
+  testo: "Scarica il Framework Nazionale per la Cybersecurity e la Data Protection ed. 2019:"
+  copertina: /sites/default/files/copertinaNuova2.png
+  documento: /sites/default/files/framework2/Framework_nazionale_cybersecurity_data_protection.pdf
+  descrizione: Cover_Framework.jpg
+
+framework-2015:
+  tipo: download
+  testo: "Scarica il Framework Nazionale per la Cyber Security ed. 2015:"
+  copertina: /sites/default/files/copertinaNuova.png
+  documento: /sites/default/files/CSR2015_web.pdf
+  descrizione: Cover_Framework.jpg
+
+controlli-essenziali:
+  tipo: download
+  testo: "Scarica i Controlli Essenziali di Cybersecurity"
+  copertina: /sites/default/files/CopertinaCSR2016.png
+  documento: /sites/default/files/csr2016web.pdf

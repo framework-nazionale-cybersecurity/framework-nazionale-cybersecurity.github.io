@@ -1,0 +1,66 @@
+---
+/**
+ * Immagine con dimensioni, allineamento, cornice e collegamento opzionali.
+ *
+ * Si usa nelle pagine .mdx quando un'immagine Markdown semplice non basta:
+ *
+ *   <Immagine src="/percorso.png" larghezza={150} altezza={212}
+ *     allinea="destra" cornice collegamento="/documento.pdf" />
+ *
+ * Gli stili sono generati qui e non scritti nelle pagine: al revamp si
+ * cambiano in questo file, una volta, per tutte le immagini del sito.
+ *
+ * Due usi:
+ *  - con allinea="destra" l'immagine scorre dentro il testo: va scritta
+ *    all'inizio del paragrafo, sulla stessa riga del testo che la circonda;
+ *  - senza allineamento e' un paragrafo a se': va su una riga propria, e il
+ *    componente la avvolge in <p> come faceva il sito originale.
+ */
+interface Props {
+  src: string;
+  alt?: string;
+  larghezza?: number;
+  altezza?: number;
+  allinea?: 'destra';
+  cornice?: boolean;
+  collegamento?: string;
+  nuovaFinestra?: boolean;
+}
+
+const {
+  src,
+  alt = '',
+  larghezza,
+  altezza,
+  allinea,
+  cornice = false,
+  collegamento,
+  nuovaFinestra = false,
+} = Astro.props;
+
+const stile =
+  [
+    larghezza && `width: ${larghezza}px;`,
+    altezza && `height: ${altezza}px;`,
+    allinea === 'destra' && 'float: right;',
+    cornice && 'border-width: 1px; border-style: solid; margin-left: 5px; margin-right: 5px;',
+  ]
+    .filter(Boolean)
+    .join(' ') || undefined;
+---
+
+{allinea ? (
+  collegamento ? (
+    <a href={collegamento} target={nuovaFinestra ? '_blank' : undefined}><img alt={alt} src={src} style={stile} /></a>
+  ) : (
+    <img alt={alt} src={src} style={stile} />
+  )
+) : (
+  <p>
+    {collegamento ? (
+      <a href={collegamento} target={nuovaFinestra ? '_blank' : undefined}><img alt={alt} src={src} style={stile} /></a>
+    ) : (
+      <img alt={alt} src={src} style={stile} />
+    )}
+  </p>
+)}

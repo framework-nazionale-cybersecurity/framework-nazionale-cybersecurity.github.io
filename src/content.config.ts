@@ -1,30 +1,65 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 
 /**
- * I contenuti stanno in content/, fuori da src/, perche' sono il prodotto
- * dell'estrazione da Drupal (fase 1) e restano indipendenti dal generatore:
- * se un giorno Astro non convincesse piu', il Markdown si porta altrove.
+ * Tre collezioni: le pagine, il menu, la spalla.
  *
- * Lo schema non e' decorativo. Convalida in fase di build cio' che la
- * migrazione non puo' permettersi di sbagliare: la lingua, e soprattutto
- * url_originali, cioe' gli URL storici che devono continuare a rispondere.
+ * Lo schema non e' decorativo: convalida in fase di build cio' che chi modifica
+ * a mano potrebbe sbagliare. Un indirizzo senza barra iniziale, una lingua
+ * scritta male, un blocco della spalla a cui manca il documento: la build si
+ * ferma e dice dove, invece di pubblicare un sito rotto.
  */
+
+const percorso = z.string().startsWith('/', { message: 'gli indirizzi iniziano con /' });
+
 const pagine = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './content' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './content' }),
   schema: z.object({
-    nid: z.number(),
     titolo: z.string().min(1),
+    /** Lingua del contenuto. "und" = neutra, servita uguale in italiano e sotto /en. */
     lingua: z.enum(['it', 'en', 'und']),
-    tipo: z.string(),
-    // YAML interpreta 2025-04-11 come data, non come stringa: si tipizzano
-    // quindi come date vere, che e' anche piu' corretto per ordinarle.
-    creato: z.coerce.date(),
-    modificato: z.coerce.date(),
-    formato_originale: z.string(),
-    traduzione_di: z.number().optional(),
-    url_originali: z.array(z.string().startsWith('/')).min(1),
+    /** Indirizzi a cui la pagina viene servita. Il primo e' quello principale. */
+    indirizzi: z.array(percorso).min(1),
+    /** Indirizzi storici che rinviano al principale (es. i vecchi /node/NNNN). */
+    rinvii: z.array(percorso).default([]),
+    /** Indirizzo della stessa pagina nell'altra lingua, se esiste. */
+    traduzione: percorso.optional(),
   }),
 });
 
-export const collections = { pagine };
+const menu = defineCollection({
+  loader: file('src/dati/menu.yaml'),
+  schema: z.object({
+    voci: z.array(
+      z.object({
+        titolo: z.string(),
+        indirizzo: z.string(),
+        /** Testo mostrato al passaggio del mouse. */
+        suggerimento: z.string().optional(),
+        /** false = la voce non viene mai evidenziata come pagina corrente. */
+        evidenzia: z.boolean().default(true),
+      })
+    ),
+  }),
+});
+
+const spalla = defineCollection({
+  loader: file('src/dati/spalla.yaml'),
+  schema: z.discriminatedUnion('tipo', [
+    z.object({
+      tipo: z.literal('logo'),
+      immagine: z.string(),
+      collegamento: z.string(),
+      descrizione: z.string().default(''),
+    }),
+    z.object({
+      tipo: z.literal('download'),
+      testo: z.string(),
+      copertina: z.string(),
+      documento: z.string(),
+      descrizione: z.string().default(''),
+    }),
+  ]),
+});
+
+export const collections = { pagine, menu, spalla };

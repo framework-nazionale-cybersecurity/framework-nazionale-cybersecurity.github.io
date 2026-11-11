@@ -1,0 +1,48 @@
+# Menu principale del sito, una lista per lingua.
+#
+# Per aggiungere una voce: copiare un blocco che inizia con "- titolo:" e
+# cambiare titolo e indirizzo. L'ordine delle voci e' quello della lista.
+#
+#   titolo        il testo mostrato nel menu
+#   indirizzo     la pagina a cui porta
+#   suggerimento  (facoltativo) testo che compare al passaggio del mouse
+#   evidenzia     (facoltativo) false = la voce non si evidenzia mai come
+#                 pagina corrente
+#
+# La voce della pagina in cui ci si trova viene evidenziata da sola: non serve
+# indicarla.
+
+it:
+  voci:
+    - titolo: Framework ed. 2025
+      indirizzo: /edizione2025
+      suggerimento: Framework Nazionale per la Cybersecurity e la Data Protection - Edizione 2025 (V2.1)
+    - titolo: Framework ed. 2019
+      indirizzo: /framework2
+      suggerimento: Framework Nazionale per la Cybersecurity e la Data Protection
+    - titolo: Framework ed. 2015
+      indirizzo: /framework-ed-2015
+    - titolo: Metodologia per il cybersecurity assessment
+      indirizzo: /metodologia-assessment
+    - titolo: Controlli Essenziali di Cybersecurity
+      indirizzo: /csr2016
+      # Nel sito Drupal questa voce non si evidenziava mai: il collegamento era
+      # scritto come indirizzo assoluto e Drupal lo trattava come esterno.
+      # Riprodotto per fedelta'; da rivedere nel revamp.
+      evidenzia: false
+    - titolo: Contestualizzazioni
+      indirizzo: /contestualizzazioni
+
+en:
+  voci:
+    - titolo: Framework ed. 2025
+      indirizzo: /en/node/5927
+      suggerimento: Framework Nazionale per la Cybersecurity e la Data Protection - Edizione 2025 (V2.1)
+    - titolo: Framework ed. 2019
+      indirizzo: /en/node/5925
+      suggerimento: Framework Nazionale per la Cybersecurity e la Data Protection
+    - titolo: Metodologia per il cybersecurity assessment
+      indirizzo: /en/node/5926
+    - titolo: Controlli Essenziali di Cybersecurity
+      indirizzo: /csr2016
+      evidenzia: false

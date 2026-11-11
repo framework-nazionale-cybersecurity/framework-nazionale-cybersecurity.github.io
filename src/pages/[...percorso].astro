@@ -1,74 +1,78 @@
 ---
 /**
- * Rotta unica: genera ogni URL storico a partire dal reso catturato da Drupal.
+ * Rotta unica: genera ogni indirizzo del sito a partire dalle pagine.
  *
- * Il vincolo della migrazione e' che nessun URL attivo oggi restituisca 404, e
- * che nessuna pagina appaia diversa dall'originale. Le rotte non sono quindi
- * scritte a mano: si generano da content/_reso.json, che contiene le tre
- * regioni (corpo, menu, spalla) cosi' come Drupal le produce, per ogni URL.
+ * Ogni file in content/ dichiara nel proprio front-matter:
+ *   indirizzi  dove la pagina viene servita (il primo e' il principale)
+ *   rinvii     indirizzi storici che devono continuare a funzionare
  *
- * Un URL presente fra gli url_originali ma assente dal reso e' un rinvio:
- * online risponde 301 verso l'alias parlante. GitHub Pages non offre redirect
- * lato server, quindi il rinvio e' una pagina con rel=canonical e meta refresh.
- * Non e' un 301, ma consolida il segnale per i motori ed e' trasparente.
+ * I rinvii producono una pagina con rel=canonical e meta refresh: GitHub Pages
+ * non offre redirect lato server. Non e' un 301, ma consolida il segnale per i
+ * motori di ricerca ed e' trasparente per chi naviga.
+ *
+ * Se due pagine dichiarano lo stesso indirizzo la build si ferma: e' l'errore
+ * piu' facile da commettere aggiungendo una pagina copiandone un'altra.
  */
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import reso from '../../content/_reso.json';
+import Immagine from '../componenti/Immagine.astro';
+import Video from '../componenti/Video.astro';
 
 export async function getStaticPaths() {
-  const catturato: Record<string, { corpo: string; menu: string; spalla: string }> =
-    (await import('../../content/_reso.json')).default as any;
-
-  /** Nodi che Drupal serve come pagine iniziali, italiana e inglese. */
-  const HOME = { 5927: '/', 5915: '/en' } as Record<number, string>;
-
   const pagine = await getCollection('pagine');
   const rotte: any[] = [];
+  const dichiarati = new Map<string, string>();
 
-  // Indice url → pagina, per recuperare il titolo di ciascun URL.
-  const perUrl = new Map<string, any>();
-  for (const p of pagine) for (const u of p.data.url_originali) perUrl.set(u, p);
-  for (const p of pagine) if (HOME[p.data.nid]) perUrl.set(HOME[p.data.nid], p);
+  const registra = (indirizzo: string, origine: string) => {
+    const gia = dichiarati.get(indirizzo);
+    if (gia) throw new Error(`L'indirizzo ${indirizzo} è dichiarato due volte: in ${gia} e in ${origine}`);
+    dichiarati.set(indirizzo, origine);
+  };
+  const parametro = (u: string) => u.replace(/^\//, '') || undefined;
 
-  const aggiungi = (url: string, pagina: any, rinvioVerso: string | null) =>
-    rotte.push({
-      params: { percorso: url.replace(/^\//, '') || undefined },
-      props: { titolo: pagina?.data.titolo ?? '', url, rinvioVerso },
-    });
+  for (const pagina of pagine) {
+    const { indirizzi, rinvii } = pagina.data;
 
-  // 1. Le pagine che hanno un contenuto reso.
-  for (const url of Object.keys(catturato)) aggiungi(url, perUrl.get(url), null);
+    for (const url of indirizzi) {
+      registra(url, pagina.id);
+      rotte.push({ params: { percorso: parametro(url) }, props: { pagina, url, rinvioVerso: null } });
+    }
 
-  // 2. I rinvii: URL storici privi di reso proprio.
-  for (const p of pagine) {
-    const suoi: string[] = p.data.url_originali;
-    const propri = suoi.filter((u) => catturato[u]);
-    const home = HOME[p.data.nid];
-    if (!propri.length && !home) continue; // nodo non pubblicabile: vedi sotto
-
-    for (const u of suoi) {
-      if (catturato[u]) continue;
-      // Un URL sotto /en rinvia alla versione inglese, se esiste.
-      const inglese = u.startsWith('/en');
+    for (const url of rinvii) {
+      registra(url, pagina.id);
+      // Un indirizzo sotto /en rinvia alla versione inglese, se esiste.
+      const inglese = url.startsWith('/en');
       const meta =
-        (inglese ? propri.find((x) => x.startsWith('/en')) : propri.find((x) => !x.startsWith('/en'))) ??
-        propri[0] ?? home;
-      aggiungi(u, p, meta);
+        (inglese ? indirizzi.find((u) => u.startsWith('/en')) : indirizzi.find((u) => !u.startsWith('/en'))) ??
+        indirizzi[0];
+      rotte.push({ params: { percorso: parametro(url) }, props: { pagina, url, rinvioVerso: meta } });
     }
   }
-
-  // Nota: il nodo 5921 non compare in nessuna delle due liste. Il suo alias e'
-  // salvato con uno slash iniziale di troppo, Drupal ci rinvia da qualunque
-  // URL e la pagina risponde 404 a chiunque. Pubblicarla sarebbe una
-  // differenza rispetto all'originale, non una correzione richiesta.
-
   return rotte;
 }
 
-const { titolo, url, rinvioVerso } = Astro.props;
-const pezzi = (reso as Record<string, { corpo: string; menu: string; spalla: string }>)[url];
+const { pagina, url, rinvioVerso } = Astro.props;
 const inglese = url === '/en' || url.startsWith('/en/');
+const { Content } = await render(pagina);
+
+/**
+ * Sotto /en Drupal faceva restare chi naviga nell'interfaccia inglese: i
+ * collegamenti interni alle pagine prendevano il prefisso /en, quelli ai file
+ * no. Da /en/csr2016 il modello dei costi e' quindi /en/modelloStimaCosti.
+ *
+ * Si applica alle pagine non inglesi servite sotto /en, il cui testo e' scritto
+ * con gli indirizzi italiani. Solo ai .md: e' di questi che Astro conserva
+ * l'HTML gia' reso, su cui fare la sostituzione.
+ */
+function prefissaInterni(html: string) {
+  return html.replace(/(\bhref\s*=\s*")(\/[^"]*)(")/gi, (intero, a, u, z) => {
+    if (u === '/en' || u.startsWith('/en/')) return intero;
+    if (/^\/(sites|stili)\//i.test(u)) return intero;
+    return `${a}/en${u === '/' ? '' : u}${z}`;
+  });
+}
+const htmlInglese =
+  inglese && pagina.data.lingua !== 'en' && pagina.rendered?.html ? prefissaInterni(pagina.rendered.html) : null;
 ---
 
 {
@@ -76,7 +80,7 @@ const inglese = url === '/en' || url.startsWith('/en/');
     <html lang={inglese ? 'en' : 'it'}>
       <head>
         <meta charset="utf-8" />
-        <title>{titolo}</title>
+        <title>{pagina.data.titolo}</title>
         <link rel="canonical" href={new URL(rinvioVerso, Astro.site)} />
         <meta http-equiv="refresh" content={`0; url=${rinvioVerso}`} />
         <meta name="robots" content="noindex, follow" />
@@ -88,9 +92,11 @@ const inglese = url === '/en' || url.startsWith('/en/');
       </body>
     </html>
   ) : (
-    <Base titolo={titolo} lingua={inglese ? 'en' : 'it'} canonico={url} menu={pezzi.menu} spalla={pezzi.spalla}>
-      <h1 class="page-title">{titolo}</h1>
-      <div class="region region-content" set:html={pezzi.corpo} />
+    <Base titolo={pagina.data.titolo} lingua={inglese ? 'en' : 'it'} canonico={url} url={url} pagina={pagina.data}>
+      <h1 class="page-title">{pagina.data.titolo}</h1>
+      <div class="region region-content">
+        {htmlInglese !== null ? <Fragment set:html={htmlInglese} /> : <Content components={{ Immagine, Video }} />}
+      </div>
     </Base>
   )
 }

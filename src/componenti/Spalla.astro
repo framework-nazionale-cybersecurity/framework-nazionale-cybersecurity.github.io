@@ -1,0 +1,24 @@
+---
+/**
+ * Colonna di sinistra: loghi e schede di download.
+ * I blocchi, e il loro ordine, vengono da src/dati/spalla.yaml.
+ */
+import { getCollection } from 'astro:content';
+
+const blocchi = await getCollection('spalla');
+---
+
+{blocchi.map((b) => (
+  <div id={`blocco-${b.id}`} class="block block-block">
+    <div class="content">
+      {b.data.tipo === 'logo' ? (
+        <p><a href={b.data.collegamento}><img alt={b.data.descrizione} src={b.data.immagine} /></a></p>
+      ) : (
+        <>
+          <p>{b.data.testo}</p>
+          <p><a href={b.data.documento}><img alt={b.data.descrizione} src={b.data.copertina} /></a></p>
+        </>
+      )}
+    </div>
+  </div>
+))}

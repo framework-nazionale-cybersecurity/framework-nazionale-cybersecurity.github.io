@@ -29,25 +29,37 @@ jobs:
       - name: Compila il sito
         run: npm run build
 
-      - name: Ogni URL del sito ha una pagina generata?
-        # L'elenco si ricava da content/_reso.json, cioe' dalle pagine
-        # effettivamente catturate dal sito Drupal: e' la stessa sorgente da
-        # cui la rotta genera gli URL, ma letta in modo indipendente, cosi'
-        # un errore nella rotta non si autoconferma.
+      - name: Collegamenti e immagini interni portano a qualcosa?
+        # Ogni href e src che punta al sito stesso deve corrispondere a un file
+        # della build. Intercetta il collegamento scritto male a mano, l'immagine
+        # dimenticata fuori da public/, la pagina rinominata senza aggiornare chi
+        # la cita. E' il controllo che sarebbe servito a scoprire subito il menu
+        # inglese rotto e la favicon mancante dopo la prima pubblicazione.
         run: |
           node -e '
-            const fs = require("fs");
-            const reso = JSON.parse(fs.readFileSync("content/_reso.json", "utf8"));
-            let mancanti = 0;
-            for (const url of Object.keys(reso)) {
-              const p = "dist" + (url === "/" ? "" : url.replace(/\/$/, "")) + "/index.html";
-              if (!fs.existsSync(p)) {
-                console.log(`::error::URL senza pagina generata: ${url}`);
-                mancanti++;
+            const fs = require("fs"), path = require("path");
+            const esiste = (u) => {
+              u = decodeURIComponent(u.split(/[?#]/)[0]);
+              if (u === "/") return true;
+              const p = path.join("dist", u);
+              return fs.existsSync(p) || fs.existsSync(path.join(p.replace(/\/$/, ""), "index.html"));
+            };
+            const rotti = new Map();
+            const giro = (d) => {
+              for (const v of fs.readdirSync(d)) {
+                const p = path.join(d, v);
+                if (fs.statSync(p).isDirectory()) { giro(p); continue; }
+                if (!v.endsWith(".html")) continue;
+                const pagina = "/" + path.relative("dist", p).replace(/index\.html$/, "");
+                for (const m of fs.readFileSync(p, "utf8").matchAll(/(?:href|src)="(\/[^"]*)"/g))
+                  if (!esiste(m[1])) rotti.set(m[1], (rotti.get(m[1]) || new Set()).add(pagina));
               }
-            }
-            console.log(`URL attesi: ${Object.keys(reso).length}, mancanti: ${mancanti}`);
-            process.exit(mancanti ? 1 : 0);
+            };
+            giro("dist");
+            for (const [u, pagine] of rotti)
+              console.log(`::error::${u} non esiste, citato da: ${[...pagine].slice(0, 5).join(" ")}`);
+            console.log(`riferimenti interni rotti: ${rotti.size}`);
+            process.exit(rotti.size ? 1 : 0);
           '
 
       - name: Conserva la build per l'anteprima privata

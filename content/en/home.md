@@ -1,18 +1,19 @@
 ---
-nid: 5915
 titolo: "A National Cybersecurity Framework"
 lingua: en
-tipo: home_page
-creato: 2016-02-08
-modificato: 2016-02-08
-formato_originale: full_html
-traduzione_di: 5906   # "Framework Nazionale per la Cybersecurity"
-url_originali:
+indirizzi:
+  - /en
+rinvii:
   - /en/node/5915
+traduzione: /
 ---
 
 The Cyber Security Report 2015, realized by CIS-Sapienza ([http://www.cis.uniroma1.it/en](http://www.cis.uniroma1.it/en)) and by the Cyber Security National Laboratory of the National Interuniversity Consortium for Informatics ([https://www.consorzio-cini.it/lab-cyber-security](https://www.consorzio-cini.it/index.php/en/national-laboratories-left/lab-cyber-security)) introduced the National Cyber Security Framework. 
 
 The Framework is based on the NIST Framework for Improving Critical Infrastructure Cybersecurity ([http://www.nist.gov/cyberframework/](http://www.nist.gov/cyberframework/)) and is the result of a Public-Private-Partnership. 
+
+&nbsp;
+
+&nbsp;
 
 DOWNLOAD THE DOCUMENT IN ENGLISH: [download](/sites/default/files/CSR2015_ENG.pdf)

@@ -1,13 +1,9 @@
 ---
-nid: 5924
 titolo: "Contestualizzazioni e altri contributi "
 lingua: it
-tipo: page
-creato: 2017-11-23
-modificato: 2019-03-27
-formato_originale: full_html
-url_originali:
+indirizzi:
   - /contestualizzazioni
+rinvii:
   - /node/5924
 ---
 
@@ -17,7 +13,7 @@ Il framework nazionale per la cybersecurity, include tra i suoi contributi una c
 
 Altre organizzazioni ed enti, indpendenti dagli autori del framework hanno successivamente proposto altre contestualizzazioni, adatte a contesti diversi. Questa pagina raccoglie i riferimenti a questi contributi con l'obiettivo di fornire a quanti intendano adottare il framework un punto di partenza basato su esperienze già maturate da altri attori.
 
-* * *
+---
 
 ## Comune di Marsciano (PG) - Contestualizzazione del Framework per assessment e pianificazione
 
@@ -30,7 +26,7 @@ Il comune, e le aziende coinvolte, hanno deciso di rilasciare il report ed i con
 -   [Report di cybersecurity del comune di Marsciano](/sites/default/files/contributi_esterni/Marsciano/Marsciano_report_cybersecurity.pdf)
 -   [Modello di contestualizzazione](/sites/default/files/contributi_esterni/Marsciano/Marsciano_tabella_contestualizzazione_FNCS.ods)
 
-* * *
+---
 
 ## Comune di Civita Castellana (VT) - Contestualizzazione per le PA locali
 
@@ -40,7 +36,9 @@ Tra i contributi del documento, viene dettagliata una possibile contestualizzazi
 
 Il report, emendato dei contenuti sensibili, è pubblicamente diponibile a questo indirizzo: [IL REPORT DI CYBERSECURITY DEL COMUNE DI CIVITA CASTELLANA](http://www.comune.civitacastellana.vt.it/scaricatore.asp?c=2ixoy29qnuxhhh61pputxs9f5)
 
-* * *
+&nbsp;
+
+---
 
 ## Progetto ASSECURE - Contestualizzazione per le strutture sanitarie
 

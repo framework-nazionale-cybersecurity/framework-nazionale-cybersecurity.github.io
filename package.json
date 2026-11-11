@@ -9,13 +9,13 @@
     "anteprima": "astro build && astro preview --host",
     "anteprima-locale": "astro build && astro preview",
     "build": "astro build",
-    "check": "astro check",
-    "verifica-url": "node tools/verifica-url.mjs"
+    "check": "astro check"
   },
   "engines": {
     "node": ">=22.0.0"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.14",
     "@astrojs/sitemap": "^3.2.1",
     "astro": "^5.2.5"
   }
