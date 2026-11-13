@@ -31,6 +31,7 @@ Il Framework Nazionale per la Cybersecurity e la Data Protection è uno strumen
 -   [Guida alla migrazione dei controlli](/sites/default/files/framework2/Guida_alla_migrazione_dei_controlli_v1.0_-_dal_FNCDP_v2.0_a_FNCDP_2025_v2.1.pdf)
 -   [Matrice di migrazione](/sites/default/files/framework2/Matrice_di_Migrazione_v1.0_-_dal_FNCDP_v2.0_al_FNCDP_v2.1.xlsx) (formato Excel)
 -   <a href="https://docs.google.com/spreadsheets/d/1i-pSNriE-jrIJfyZ7CZNCcRa3vGtGsiCkEEm0ytJjZs/edit?usp=sharing" target="_blank">Matrice di migrazione</a> (formato Google sheet)
+-   [Matrice di migrazione](/sites/default/files/framework2/Matrice_di_Migrazione_v1.0_-_dal_FNCDP_v2.0_al_FNCDP_v2.1.tsv) (formato TSV - UTF-8)
 
 &nbsp;
 
